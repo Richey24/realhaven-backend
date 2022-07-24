@@ -2,7 +2,7 @@ const mysql = require("mysql2");
 
 const deleteUser = async (req, res) => {
   const { email } = req.body;
-  const deleteQuery = "DELETE FROM user WHERE email = ?";
+  const deleteQuery = "DELETE FROM user WHERE email = ? LIMIT 1";
   mysql
     .createConnection(process.env.DATABASE_URL)
     .query(deleteQuery, [email], (err, result) => {

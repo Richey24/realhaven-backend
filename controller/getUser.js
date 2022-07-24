@@ -10,7 +10,9 @@ const getUser = (req, res) => {
         console.log(error);
         res.status(500).json({ message: err });
       } else {
-        res.status(200).json(result);
+        const [user] = result;
+        const { password, ...mainUser } = user;
+        res.status(200).json(mainUser);
       }
     });
   mysql.createConnection(process.env.DATABASE_URL).end();
