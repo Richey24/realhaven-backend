@@ -3,7 +3,7 @@ const argon2 = require("argon2");
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-  const loginQuery = "SELECT * FROM user WHERE `email` = ?";
+  const loginQuery = "SELECT * FROM user WHERE email = ?";
   mysql
     .createConnection(process.env.DATABASE_URL)
     .query(loginQuery, [email], async (err, result) => {
@@ -26,6 +26,7 @@ const login = async (req, res) => {
         }
       }
     });
+  mysql.createConnection(process.env.DATABASE_URL).end();
 };
 
 module.exports = login;
