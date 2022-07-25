@@ -1,7 +1,7 @@
 const mysql = require("mysql2");
 
 const createHouseTable =
-  "ALTER TABLE `house` ADD (`image6` varchar(255), `address` varchar(255))";
+  "ALTER TABLE `house` ADD COLUMN Id int NOT NULL AUTO_INCREMENT PRIMARY KEY";
 
 const createTable = () => {
   mysql
