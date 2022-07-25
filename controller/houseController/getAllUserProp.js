@@ -10,8 +10,7 @@ const getAllUserProp = (req, res) => {
         console.log(err);
         res.status(500).json(err);
       } else {
-        const [house] = result;
-        res.status(200).json(house);
+        res.status(200).json(result);
       }
     });
 };

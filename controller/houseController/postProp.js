@@ -19,7 +19,7 @@ const postProp = (req, res) => {
   } = req.body;
   let imageName = "";
   for (let i = 0; i < req.files.length; i++) {
-    imageName += req.files[i].filename + " ";
+    imageName += req.files[i].filename + ",";
   }
   const postQuery =
     "INSERT INTO house (email, title, address, purpose, property_type, no_of_bedroom, no_of_bathroom, no_of_toilet, state, price, currency, period, description, features, images) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
