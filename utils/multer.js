@@ -6,6 +6,7 @@ const storage = multer.diskStorage({
     callback(null, __dirname + "/../files/");
   },
   filename: (req, file, callback) => {
+    // generating a random name for each file
     callback(null, String(Date.now()) + file.originalname);
   },
 });

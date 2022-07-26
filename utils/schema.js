@@ -2,6 +2,8 @@ const mysql = require("mysql2");
 
 const createHouseTable = "UPDATE house SET images = ? WHERE Id = ?";
 
+// this file is used to make any schema changes
+
 const createTable = () => {
   mysql
     .createConnection(process.env.DATABASE_URL)

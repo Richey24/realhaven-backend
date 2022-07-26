@@ -1,5 +1,6 @@
 const mysql = require("mysql2");
 
+// getting all the property associated to a particular user
 const getAllUserProp = (req, res) => {
   const { email } = req.body;
   const getPropQuery = "SELECT * FROM house WHERE email = ?";

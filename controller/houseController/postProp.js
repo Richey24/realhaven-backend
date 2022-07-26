@@ -19,6 +19,7 @@ const postProp = (req, res) => {
   } = req.body;
   let imageName = "";
   for (let i = 0; i < req.files.length; i++) {
+    // putting all file name to a single string and adding a comma to use for splitting the string
     imageName += req.files[i].filename + ",";
   }
   const postQuery =

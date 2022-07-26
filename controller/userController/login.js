@@ -11,13 +11,17 @@ const login = async (req, res) => {
         console.log(err);
         res.status(500).json({ message: err });
       } else {
+        // checking if a user is found with that email
         if (result.length < 1) {
           res.status(404).json({ message: "No User Found With This Email" });
           return;
         }
+        // destructuring the result from the array
         const [user] = result;
+        // verify the password by comparing the hashed passoword from the database with the password enter by the user
         const verify = await argon2.verify(user.password, password);
         if (verify) {
+          // destructuring the password out of the result
           const { password, ...mainUser } = user;
           res.status(200).json(mainUser);
           return;

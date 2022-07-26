@@ -3,6 +3,7 @@ const argon2 = require("argon2");
 
 const register = async (req, res) => {
   const { fullname, email, phone, password } = req.body;
+  // hashing the password entered by the user
   const hashPass = await argon2.hash(password);
   const registerQuery =
     "INSERT INTO user (email, fullname, phone, password) VALUES (?, ?, ?, ?)";
@@ -13,6 +14,7 @@ const register = async (req, res) => {
       if (err) {
         res.status(500).json({ message: err });
         return;
+        // checking if the user is already registered
       } else if (result.length === 0) {
         mysql
           .createConnection(process.env.DATABASE_URL)

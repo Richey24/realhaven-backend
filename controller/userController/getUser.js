@@ -7,10 +7,12 @@ const getUser = (req, res) => {
     .createConnection(process.env.DATABASE_URL)
     .query(getOneUser, [email], (err, result) => {
       if (err) {
-        console.log(error);
+        console.log(err);
         res.status(500).json({ message: err });
       } else {
+        // destructuring the result from the array
         const [user] = result;
+        // destructuring the password out of the result
         const { password, ...mainUser } = user;
         res.status(200).json(mainUser);
       }
