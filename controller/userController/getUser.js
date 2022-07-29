@@ -13,8 +13,10 @@ const getUser = (req, res) => {
         // destructuring the result from the array
         const [user] = result;
         // destructuring the password out of the result
-        const { password, ...mainUser } = user;
-        res.status(200).json(mainUser);
+        if (user) {
+          const { password, ...mainUser } = user;
+          res.status(200).json(mainUser);
+        }
       }
     });
   mysql.createConnection(process.env.DATABASE_URL).end();

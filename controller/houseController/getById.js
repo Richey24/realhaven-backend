@@ -10,6 +10,10 @@ const getById = (req, res) => {
         console.log(err);
         res.status(500).json(err);
       } else {
+        if (result.length < 1) {
+          res.status(404).json({ message: "No House Found With This ID" });
+          return;
+        }
         const [house] = result;
         res.status(200).json(house);
       }
