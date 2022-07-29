@@ -3,7 +3,6 @@ const { userRoute, houseRoute } = require("./route/route");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const mysql = require("mysql2");
-// const { createTable } = require("./utils/schema");
 
 dotenv.config({ path: "./environ/.env" });
 
@@ -15,7 +14,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.listen(port, () => {
-  // createTable();
   mysql.createConnection(process.env.DATABASE_URL);
   console.log(`server listening at port ${port}`);
 });
